@@ -30,7 +30,7 @@ export class User {
     @Column({ length: 255, name: 'password_hash', select: false })
     password_hash: string;
 
-    @Column({ length: 20, nullable: true })
+    @Column({ length: 15, nullable: true })
     telefono: string;
 
     @Column({ length: 100, nullable: true })

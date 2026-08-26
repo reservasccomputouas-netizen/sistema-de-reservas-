@@ -272,4 +272,18 @@ export class ReservasService {
     private normalizeTime(time: string): string {
         return time.length === 5 ? `${time}:00` : time;
     }
+
+    async getPublicEvents() {
+        const reservas = await this.repo.createQueryBuilder('r')
+            .select(['r.fecha_uso', 'r.hora_inicio', 'r.hora_fin', 'r.estado', 'r.id_centro'])
+            .where('r.estado IN (:...estados)', { estados: [ReservaEstado.ACTIVA, ReservaEstado.COMPLETADA] })
+            .getMany();
+
+        const solicitudes = await this.solicitudRepo.createQueryBuilder('s')
+            .select(['s.fecha_uso', 's.hora_inicio', 's.hora_fin', 's.estado', 's.id_centro'])
+            .where('s.estado = :estado', { estado: SolicitudEstado.PENDIENTE })
+            .getMany();
+
+        return [...reservas, ...solicitudes];
+    }
 }

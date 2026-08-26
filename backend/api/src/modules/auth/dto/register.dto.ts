@@ -23,9 +23,11 @@ export class RegisterDto {
     @MinLength(6)
     password: string;
 
-    @IsOptional()
     @IsString()
-    telefono?: string;
+    @Matches(/^[0-9]{10}$/, {
+        message: 'El teléfono debe tener 10 números',
+    })
+    telefono: string;
 
     @IsOptional()
     @IsString()

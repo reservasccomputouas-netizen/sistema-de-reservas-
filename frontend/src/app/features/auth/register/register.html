@@ -21,18 +21,34 @@
                 </div>
 
                 <div class="campo">
-                    <label for="correo">Correo institucional</label>
-                    <input id="correo" type="email" formControlName="correo" placeholder="nombre@uas.edu.mx" />
+                    <label for="correo">Correo electrónico institucional</label>
+                    <input id="correo" formControlName="correo" type="email" placeholder="ejemplo@uas.edu.mx" />
+
+                    <small style="display: block; margin-top: 5px; color: #555; font-size: 0.85rem;">
+                        * Solo se aceptan correos con terminación <strong>@uas.edu.mx</strong> o
+                        <strong>@ms.uas.edu.mx</strong>
+                    </small>
+
+                    <small *ngIf="form.get('correo')?.hasError('dominioInvalido') && form.get('correo')?.touched"
+                        style="display: block; margin-top: 5px; color: #dc3545; font-weight: bold; font-size: 0.85rem;">
+                        ⚠️ Debes utilizar tu correo institucional.
+                    </small>
+                </div>
+
+                <div class="campo">
+                    <label for="telefono">Teléfono (10 dígitos)</label>
+                    <input id="telefono" type="tel" formControlName="telefono" placeholder="Ej. 6671234567"
+                        maxlength="10" />
+                    <small *ngIf="form.get('telefono')?.hasError('pattern') && form.get('telefono')?.touched"
+                        style="display: block; margin-top: 5px; color: #dc3545; font-weight: bold; font-size: 0.85rem;">
+                        ⚠️ El teléfono debe contener exactamente 10 números.
+                    </small>
                 </div>
 
                 <div class="campo">
                     <label for="facultad">Facultad o unidad académica</label>
-                    <select id="facultad" formControlName="facultad">
-                        <option value="" disabled>Selecciona tu unidad académica</option>
-                        <option *ngFor="let facultad of facultades" [value]="facultad.nombre">
-                            {{ facultad.nombre }}
-                        </option>
-                    </select>
+                    <input id="facultad" type="text" formControlName="facultad"
+                        placeholder="Ej. Facultad de Ingenieria" />
                 </div>
 
                 <div class="campo-grid">

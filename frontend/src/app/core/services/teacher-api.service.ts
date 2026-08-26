@@ -63,6 +63,10 @@ export class TeacherApiService {
     return this.patch<any>(`reservas/${id}/cancelar`, { motivo });
   }
 
+  markAttendance(id: string, asistencia: boolean) {
+    return this.patch<any>(`reservas/${id}/asistencia`, { asistencia });
+  }
+
   getCalendarEvents() {
     return this.get<any[]>('calendario/eventos');
   }

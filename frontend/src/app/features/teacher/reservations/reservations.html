@@ -16,6 +16,10 @@
 
             <div class="acciones">
                 <span class="estado" [ngClass]="item.status">{{ item.status }}</span>
+                <button *ngIf="item.type === 'reserva' && item.status === 'activa'" class="btn-primario"
+                    (click)="markAttendance(item)">
+                    Marcar Asistencia
+                </button>
                 <button *ngIf="item.status === 'pendiente' || item.status === 'activa'" class="btn-peligro"
                     (click)="cancel(item)">
                     Cancelar

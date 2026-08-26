@@ -39,6 +39,7 @@ export interface RegisterPayload {
   apellido2?: string;
   correo: string;
   password: string;
+  telefono: string;
   facultad: string;
 }
 

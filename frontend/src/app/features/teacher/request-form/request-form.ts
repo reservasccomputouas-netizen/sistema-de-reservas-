@@ -75,9 +75,7 @@ export class RequestFormComponent implements OnInit {
     forkJoin(requests).subscribe({
       next: () => {
         this.saving = false;
-        this.success = requests.length > 1
-          ? 'Solicitudes enviadas correctamente. Ahora aparecerán en pendientes para el administrador.'
-          : 'Solicitud enviada correctamente. Ahora aparecerá en pendientes para el administrador.';
+        this.success = 'Tu solicitud fue enviada, cuentas con 24 hrs. para enviar el oficio de solicitud correspondiente. De lo contrario su solicitud no será autorizada. Para dudas o información, comunícate al correo ccomputourn@uas.edu.mx o al teléfono +52 668 882 4831.';
         const facultad = this.formData.facultad;
         this.formData = this.emptyForm(this.centers[0]?.id_centro ?? 1);
         this.formData.facultad = facultad;

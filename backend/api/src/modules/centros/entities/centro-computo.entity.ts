@@ -24,6 +24,9 @@ export class CentroComputo {
     @Column({ default: false })
     es_general: boolean;
 
+    @Column({ length: 15, nullable: true })
+    telefono: string;
+
     @ManyToOne(() => Facultad, { eager: true, nullable: true })
     @JoinColumn({ name: 'id_facultad' })
     facultad: Facultad;

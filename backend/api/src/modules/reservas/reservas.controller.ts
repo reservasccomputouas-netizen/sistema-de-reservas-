@@ -6,6 +6,7 @@ import { ReservasService, RescheduleDto, AttendanceDto, CheckDisponibilidadDto }
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
 import { Roles } from '../../common/decorators/roles.decorator';
+import { Public } from '../../common/decorators/public.decorator';
 import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
 import { PaginationDto } from '../../common/dto/pagination.dto';
@@ -76,5 +77,12 @@ export class ReservasController {
         @Request() req,
     ) {
         return this.service.confirmAttendance(id, dto, req.user);
+    }
+
+    @Public()
+    @Get('public/eventos')
+    @ApiOperation({ summary: 'Eventos públicos para el calendario' })
+    getPublicEvents() {
+        return this.service.getPublicEvents();
     }
 }

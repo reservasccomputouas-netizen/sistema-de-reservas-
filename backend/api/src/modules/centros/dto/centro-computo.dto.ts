@@ -27,6 +27,10 @@ export class CreateCentroComputoDto {
     @IsOptional()
     @IsBoolean()
     activo?: boolean;
+
+    @IsOptional()
+    @IsString()
+    telefono?: string;
 }
 
 export class UpdateCentroComputoDto {
@@ -58,4 +62,8 @@ export class UpdateCentroComputoDto {
     @IsOptional()
     @IsBoolean()
     activo?: boolean;
+
+    @IsOptional()
+    @IsString()
+    telefono?: string;
 }

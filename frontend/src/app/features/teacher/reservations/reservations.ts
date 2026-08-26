@@ -73,6 +73,18 @@ export class Reservations implements OnInit {
     });
   }
 
+  markAttendance(item: ReservationView): void {
+    if (!confirm('¿Seguro que deseas marcar tu asistencia a esta reserva?')) return;
+
+    this.teacherApi.markAttendance(item.id, true).subscribe({
+      next: () => this.loadItems(),
+      error: () => {
+        this.error = 'No se pudo registrar la asistencia.';
+        this.cdr.detectChanges();
+      },
+    });
+  }
+
   private mapRequest(request: any): ReservationView {
     return {
       id: String(request.id_solicitud),
