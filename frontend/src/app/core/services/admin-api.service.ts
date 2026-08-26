@@ -35,9 +35,9 @@ export interface Facultad {
 
 @Injectable({ providedIn: 'root' })
 export class AdminApiService {
-  private readonly apiUrl = 'http://localhost:3000/api/v1';
+  private readonly apiUrl = 'https://api-reservas-uas.onrender.com/api/v1';
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) { }
 
   getDashboard() {
     return this.get<any>('dashboard/admin');

@@ -45,7 +45,7 @@ export interface RegisterPayload {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly apiUrl = 'http://localhost:3000/api/v1/auth';
+  private readonly apiUrl = 'https://api-reservas-uas.onrender.com/api/v1';
 
   // Reactive signals for auth state
   private readonly _user = signal<AuthUser | null>(this.loadUserFromStorage());
