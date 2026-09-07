@@ -10,8 +10,7 @@ async function bootstrap() {
 
   // CORS — permite Angular frontend
   app.enableCors({
-    origin: process.env.CORS_ORIGIN ?? 'http://localhost:4200',
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    origin: ['http://localhost:4200', 'https://lustrous-wisp-52d362.netlify.app'], methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   });
